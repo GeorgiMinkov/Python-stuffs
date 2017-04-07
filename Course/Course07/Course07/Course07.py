@@ -27,6 +27,48 @@ class Matrix(object):
         self._values[row - 1][column - 1] = value
 
 
+def f(*args):
+    print args
+
+
+class Rapper(object):
+    def __init__(self, func):
+       self.func = func
+
+    def __call__(self, *args):
+        return map(self.func, args)
+
+def sqare(x):
+    return x ** 2
+
+#######################################################################
+def wrapWith(f):
+    def wrapper(g):
+        def wrapped(*args, **kwargs):
+            return f(g(*args, **kwargs))
+        return wrapped
+    return wrapper
+
+def kasa(f):
+    print "KASA"
+
+@wrapWith(kasa)
+def bira():
+    print "bira"
+    return 42
+
+
+class WrapWith(object):
+    def __init__(self, f):
+        self.f = f
+    
+    def __call__(self, g):
+        def wrapped(*args, **kwargs):
+            return self.f(g(*args, **kwargs))
+        return wrapped
+
+########################inheritance
+
 
 if __name__ == "__main__":
     #v = Vector(1, 5, 6)
@@ -37,3 +79,12 @@ if __name__ == "__main__":
     print m[1, 2]
     print m[2, 2]
     print m[3, 2]
+
+    xs = [1, 2, 3]
+    f(xs)
+    f(*xs)
+
+    m = Rapper(sqare)
+    print m(1, 2, 3)
+
+    print bira()

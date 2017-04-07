@@ -10,7 +10,7 @@ class Vector(object):
 
     def normalize(self):
         norm = self.norm()
-        return Vector(*(tuple(component / norm for component in self)))
+        return Vector(*(tuple(component / norm for component in self))) # * unpack-ва
 
     def __div__(self, coef):
         return Vector(*(tuple(component / coef for component in self)))
