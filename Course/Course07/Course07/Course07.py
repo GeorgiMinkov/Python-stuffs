@@ -3,7 +3,7 @@
 
 class Vector(object):
     def __init__(self, *values):
-        self._values = list(values) # за да може да е mutable
+        self._values = list(values) # ?? ?? ???? ?? ? mutable
 
 
     def __getitem__(self, key):
@@ -17,7 +17,7 @@ class Vector(object):
 class Matrix(object):
     def __init__(self, rows, cols):
         # [0] * 3 = [0, 0, 0]
-        # става бъг, че при сетване на стойност я мултиплицира навсякъде заради умножението self._values = [[0] * cols] * rows
+        # ????? ???, ?? ??? ??????? ?? ???????? ? ???????????? ????????? ?????? ??????????? self._values = [[0] * cols] * rows
         self._values = [[0] * cols for i in xrange(0, rows)]
 
     def __getitem__(self, (row, column)):
@@ -68,23 +68,47 @@ class WrapWith(object):
         return wrapped
 
 ########################inheritance
+class D(object):
+    def foo(self):
+        print "D's foo"
 
 
+class C(D):
+    def foo(self):
+        print "C's foo"
+        return super(C, self).foo()
+
+class B(D):
+    def foo(self):
+        print "B's foo"
+        return super(B, self).foo()
+
+class A(B, C):
+    def foo(self):
+        print "A's foo"
+        return super(A, self).foo()
+    # MRO - Method Resolution Order
+   
 if __name__ == "__main__":
     #v = Vector(1, 5, 6)
     #v[1] = 9
-    m = Matrix(3, 3)
-    m[1, 2] = 10
+    #m = Matrix(3, 3)
+    #m[1, 2] = 10
    
-    print m[1, 2]
-    print m[2, 2]
-    print m[3, 2]
+    #print m[1, 2]
+    #print m[2, 2]
+    #print m[3, 2]
 
-    xs = [1, 2, 3]
-    f(xs)
-    f(*xs)
+    #xs = [1, 2, 3]
+    #f(xs)
+    #f(*xs)
 
-    m = Rapper(sqare)
-    print m(1, 2, 3)
+    #m = Rapper(sqare)
+    #print m(1, 2, 3)
 
-    print bira()
+    #print bira()
+
+    test = A()
+
+    test.foo()
+    print A.__mro__
