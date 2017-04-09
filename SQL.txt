@@ -1,0 +1,28 @@
+SELECT address
+FROM Studio
+WHERE name = "MGM"
+
+
+SELECT bithdate
+FROM MovieStar
+WHERE name = "Sandra Bullock"
+
+SELECT starName
+FROM StarsIn
+WHERE movieYear = 1980 OR movieTitle LIKE "%Love%"
+
+SELECT name
+FROM MovieExec
+WHERE netWoth >= 10000000
+
+SELECT name
+FROM MovieStar
+WHERE gender = "male" OR address LIKE "%Malibu%"
+
+SELECT M.name
+FROM MovieStar M, StarsIn S
+WHERE S.movieTitle = "Titanic" AND S.starName = M.name AND M.gender = "male"
+
+SELECT S.starName
+FROM StarsIn S, Movies M
+Where S.movieTitle = M.title AND M.studioName= "MGM" AND M.year = 1995
