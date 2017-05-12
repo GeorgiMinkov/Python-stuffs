@@ -17,8 +17,6 @@ print int_pattern.match("q27p")
 
 print int_pattern.match("3.1415")
 
-
-
 float_pattern = re.compile(r'^(0|[1-9][0-9]*(\.[0-9]*[1-9])?)$')
 
 float_pattern = re.compile(r'^(0|[1-9][0-9]*(\.[0-9]+)?)$')
@@ -37,5 +35,14 @@ mac_pattern = re.compile(r'^([0-9A-F][0-9A-F]:){5}([0-9A-F][0-9A-F])$')
 
 print mac_pattern.match("00:00:00:00:00:00")
 
-m = int_pattern.match("eza")
-help(m)
+_pattern = re.compile(r'^((0|[1-9][0-9]*)(\.[0-9]+)?)$')
+
+_pattern = re.compile(r'^(0|[1-9][0-9]*)(\.([0-9]+))?$')
+
+m = _pattern.match("1234.567")
+
+print m.groups()
+
+print m.group(1)
+
+print m.group(2)
