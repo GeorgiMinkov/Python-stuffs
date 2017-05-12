@@ -52,3 +52,6 @@ pattern = re.compile(r'(.*)')
 m = pattern.match("absdef")
 
 print m.groups()
+
+magic_pattern = re.compile(r'[0-9]+')
+magic_pattern.findall("asdasdasdsdy6s66")
