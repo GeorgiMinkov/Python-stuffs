@@ -34,6 +34,7 @@ def extract_temperatures(records):
     for i in records:
         yield i[2]
 # ... примера с температурите
+# прегледай itertools
 if __name__ == '__main__':
     # sq = SquaresUpTo(100)
     # for s in sq:
