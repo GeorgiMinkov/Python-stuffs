@@ -46,3 +46,9 @@ print m.groups()
 print m.group(1)
 
 print m.group(2)
+
+pattern = re.compile(r'(.*)')
+
+m = pattern.match("absdef")
+
+print m.groups()
